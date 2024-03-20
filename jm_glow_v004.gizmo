@@ -1,0 +1,248 @@
+Gizmo {
+help "A log-ish glow with controls for in/out direction and falloff shape. Breaks timeBlur since it is based on the subframe timeBlur trick.\n\n jm_glow_v004\n -by Johannes Møgelvang"
+ addUserKnob {20 User}
+ addUserKnob {41 glowSize T GLOW_CONTROL.glowSize}
+ addUserKnob {41 glowAngle T GLOW_CONTROL.glowAngle}
+ addUserKnob {41 glowFalloffCurve T GLOW_CONTROL.glowFalloffCurve}
+ addUserKnob {41 blurMin T GLOW_CONTROL.blurMin}
+ addUserKnob {41 gain T GLOW_CONTROL.gain}
+ addUserKnob {41 glowSpreadDirection T GLOW_CONTROL.glowSpreadDirection}
+ addUserKnob {41 filter T GLOW_CONTROL.filter}
+ addUserKnob {41 onlyAlpha T GLOW_CONTROL.onlyAlpha}
+ addUserKnob {41 disableNoTimeBlur l "disable NoTimeBlur" T GLOW_CONTROL.disableNoTimeBlur}
+ addUserKnob {41 frameDivisions T GLOW_CONTROL.frameDivisions}
+ addUserKnob {41 frameDivisionShutter T GLOW_CONTROL.frameDivisionShutter}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos 542
+  ypos 413
+ }
+ Dot {
+  name Dot5
+  label IN
+  xpos 576
+  ypos 453
+ }
+ Dot {
+  name Dot6
+  xpos 576
+  ypos 525
+ }
+set Na92c02e0 [stack 0]
+ NoTimeBlur {
+  name NoTimeBlur2
+  xpos 542
+  ypos 619
+  disable {{GLOW_CONTROL.disableNoTimeBlur}}
+ }
+set Nd857f800 [stack 0]
+ Dot {
+  name Dot8
+  xpos 670
+  ypos 701
+ }
+ Remove {
+  channels {rgba.red rgba.green rgba.blue -rgba.alpha}
+  name Remove1
+  xpos 636
+  ypos 739
+ }
+ Transform {
+  rotate {{parent.GLOW_CONTROL.glowAngle}}
+  center {{"((bbox.r - bbox.x) / 2) + bbox.x"} {"(bbox.h / 2) + bbox.y"}}
+  name glowAngleRot1
+  xpos 636
+  ypos 779
+ }
+ Blur {
+  channels rgba
+  size {{"(GLOW_CONTROL.glowSize.w*(frame%1)**GLOW_CONTROL.glowFalloffCurve) + GLOW_CONTROL.blurMin.w"} {"(GLOW_CONTROL.glowSize.h*(frame%1)**GLOW_CONTROL.glowFalloffCurve) + GLOW_CONTROL.blurMin.h"}}
+  filter {{GLOW_CONTROL.filter x1 0}}
+  name masterBlur3
+  xpos 636
+  ypos 823
+ }
+ Transform {
+  rotate {{-parent.glowAngleRot1.rotate}}
+  center {{parent.glowAngleRot1.center} {parent.glowAngleRot1.center}}
+  name Transform2
+  xpos 636
+  ypos 869
+ }
+ Dot {
+  name Dot7
+  xpos 670
+  ypos 913
+ }
+push $Nd857f800
+ Dot {
+  name Dot14
+  xpos 469
+  ypos 701
+ }
+ Transform {
+  rotate {{parent.GLOW_CONTROL.glowAngle}}
+  center {{"((bbox.r - bbox.x) / 2) + bbox.x"} {"(bbox.h / 2) + bbox.y"}}
+  name glowAngleRot
+  xpos 435
+  ypos 779
+ }
+ Blur {
+  channels rgba
+  size {{"(GLOW_CONTROL.glowSize.w*(frame%1)**GLOW_CONTROL.glowFalloffCurve) + GLOW_CONTROL.blurMin.w"} {"(GLOW_CONTROL.glowSize.h*(frame%1)**GLOW_CONTROL.glowFalloffCurve) + GLOW_CONTROL.blurMin.h"}}
+  filter {{GLOW_CONTROL.filter x1 0}}
+  name masterBlur4
+  xpos 435
+  ypos 823
+ }
+ Transform {
+  rotate {{-parent.glowAngleRot.rotate}}
+  center {{parent.glowAngleRot.center} {parent.glowAngleRot.center}}
+  name Transform1
+  xpos 435
+  ypos 869
+ }
+ Dot {
+  name Dot15
+  xpos 469
+  ypos 908
+ }
+ Switch {
+  inputs 2
+  which {{GLOW_CONTROL.onlyAlpha}}
+  name Switch1
+  xpos 543
+  ypos 958
+ }
+ TimeBlur {
+  divisions {{GLOW_CONTROL.frameDivisions}}
+  shutter {{parent.GLOW_CONTROL.frameDivisionShutter}}
+  shutteroffset end
+  shuttercustomoffset 0
+  name TimeBlur3
+  xpos 543
+  ypos 1034
+ }
+set Na92f3d20 [stack 0]
+ Multiply {
+  value {{parent.GLOW_CONTROL.gain}}
+  name Multiply3
+  xpos 543
+  ypos 1190
+ }
+ Dot {
+  name Dot16
+  xpos 577
+  ypos 1260
+ }
+set Na92fed40 [stack 0]
+ ColorLookup {
+  lut {master {curve 0 L x0.5 1 s0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup2
+  xpos 635
+  ypos 1333
+ }
+push 0
+push $Na92fed40
+push $Na92f3d20
+ Dot {
+  name Dot17
+  xpos 428
+  ypos 1103
+ }
+ Invert {
+  name Invert3
+  xpos 394
+  ypos 1141
+ }
+ Multiply {
+  value {{parent.GLOW_CONTROL.gain}}
+  name Multiply4
+  xpos 394
+  ypos 1190
+ }
+ Invert {
+  name Invert4
+  xpos 394
+  ypos 1240
+ }
+ ColorLookup {
+  lut {master {curve x0.5 0 s0 L x1 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup5
+  xpos 449
+  ypos 1331
+ }
+ Dissolve {
+  inputs 3+1
+  which {{GLOW_CONTROL.glowSpreadDirection+1}}
+  name Dissolve2
+  xpos 543
+  ypos 1406
+ }
+set N882af8a0 [stack 0]
+push $Na92c02e0
+ Dot {
+  name Dot18
+  xpos 783
+  ypos 591
+ }
+ Dot {
+  name Dot19
+  xpos 783
+  ypos 1465
+ }
+ ShuffleCopy {
+  inputs 2
+  name ShuffleCopy1
+  label "\[value knob.in] --> \[value knob.out]\n\[value knob.in2] --> \[value knob.out2]"
+  xpos 644
+  ypos 1519
+ }
+push $N882af8a0
+ Switch {
+  inputs 2
+  which {{GLOW_CONTROL.onlyAlpha}}
+  name Switch2
+  xpos 543
+  ypos 1623
+ }
+ NoOp {
+  name GLOW_CONTROL
+  xpos 543
+  ypos 1722
+  addUserKnob {20 User}
+  addUserKnob {6 channels_panelDropped l "panel dropped state" -STARTLINE +HIDDEN}
+  addUserKnob {14 glowSize t "Main size control of the glow." R 0 1000}
+  glowSize 150
+  addUserKnob {7 glowAngle R -90 90}
+  addUserKnob {7 glowFalloffCurve t "Shape of the glow falloff." R 0 5}
+  glowFalloffCurve 4
+  addUserKnob {14 blurMin t "Extra blur to soften edges if they are too sharp." R 0 100}
+  addUserKnob {7 gain t "Glow booster." R 0 4}
+  gain 1
+  addUserKnob {7 glowSpreadDirection t "-1 Glows inward\n 0 Glows in both directions\n 1 Glows outward\nWorks best in clean int values, but blending is possible. " R -1 1}
+  addUserKnob {68 filter M {box triangle quadratic gaussian ""}}
+  filter gaussian
+  addUserKnob {6 onlyAlpha t "Only processes the alpha channel." +STARTLINE}
+  addUserKnob {6 disableNoTimeBlur l "disable NoTimeBlur" t "NoTimeBlur is on by default to prevent odd behaviour when input is moving.\nBut it can be disabled here if nesercary.  " +STARTLINE}
+  addUserKnob {7 frameDivisions t "Number of subframe steps. \nUsusally not nesercary to adjust." R 0 10}
+  frameDivisions 10
+  addUserKnob {7 frameDivisionShutter t "Shutter length of the subframe timeBlur. \nUsusally not nesercary to adjust."}
+  frameDivisionShutter 0.95
+ }
+ Output {
+  name Output1
+  xpos 543
+  ypos 1822
+ }
+end_group

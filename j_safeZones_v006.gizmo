@@ -1,0 +1,303 @@
+#! /Applications/Nuke6.2v1/Nuke6.2v1.app/Contents/MacOS/Nuke6.2v1 -nx
+version 6.2 v1
+Gizmo {
+ help "safeZones v003\nDisplays action safe and text safe overlays.\nDefault settings refer to standard HD video"
+ note_font Verdana
+ mapsize {0.15 0.15}
+ addUserKnob {20 safeZoneControls l "Safe Zones Control"}
+ addUserKnob {41 actionSafe l "Action Safe" T safeInput.actionSafe}
+ addUserKnob {41 txtSafe l "Text Safe " T safeInput.txtSafe}
+ addUserKnob {41 drawTxt l "Draw Text" T safeInput.drawTxt}
+ addUserKnob {41 drawLines l "Draw Lines" T safeInput.drawLines}
+ addUserKnob {41 drawShading l "Draw Shading" T safeInput.drawShading}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -523
+  ypos -489
+ }
+ NoOp {
+  name safeInput
+  help "Displays action safe and text safe overlay.\nDefault settings refer to standard HD video"
+  xpos -523
+  ypos -391
+  addUserKnob {20 safeZonesControl l "safe Zones Control"}
+  addUserKnob {14 actionSafe l "Action Safe" t "actionSafe in % \nDefault is 3.5" R 0 100}
+  actionSafe {3.5 3.5}
+  addUserKnob {14 txtSafe l "Text Safe " t "txtSafe in %\nDefault is width 10 and height 5" R 0 100}
+  txtSafe {10 5}
+  addUserKnob {7 drawTxt l "Draw Text" t "Info text opacity"}
+  drawTxt 0.1
+  addUserKnob {7 drawLines l "Draw Lines" t "Line opacity"}
+  drawLines 0.2
+  addUserKnob {7 drawShading l "Draw Shading" t "Shading opacity"}
+  drawShading 0.7
+ }
+set N3ccb46c0 [stack 0]
+ Crop {
+  box {0 0 {width i} {height i}}
+  name Crop1
+  selected true
+  xpos -523
+  ypos -331
+ }
+ Dot {
+  name Dot3
+  xpos -489
+  ypos -293
+ }
+set N2d4bbe0 [stack 0]
+ Shuffle {
+  red white
+  green white
+  blue white
+  alpha white
+  name Shuffle2
+  xpos -905
+  ypos -110
+ }
+ Dot {
+  name Dot1
+  xpos -871
+  ypos -44
+ }
+set N1dc709e0 [stack 0]
+ Transform {
+  scale {{"1 - ((safeInput.actionSafe.w * 2) / 100)" i} {"1 - ((safeInput.actionSafe.h * 2) / 100)" i}}
+  center {{width/2 i} {"height / 2" i}}
+  name actionSafeScale
+  xpos -945
+  ypos -19
+  addUserKnob {20 User}
+  addUserKnob {7 z l "" +STARTLINE}
+  z {{safeSize.h i}}
+  addUserKnob {14 zz l "" +STARTLINE R 0 100}
+  zz {{safeSize i} {safeSize i}}
+  addUserKnob {14 safeSize R 0 100}
+  safeSize {0.1 0.05}
+ }
+set N1dc746a0 [stack 0]
+push $N1dc709e0
+ Transform {
+  scale {{"1 - ((safeInput.txtSafe.w * 2) / 100)" i} {"1 - ((safeInput.txtSafe.h * 2) / 100)" i}}
+  center {{"width / 2" i} {"height / 2" i}}
+  name txtSafeScale
+  xpos -843
+  ypos -15
+  addUserKnob {20 User}
+  addUserKnob {7 afglasdfjasd}
+  addUserKnob {14 hgfhhhg R 0 100}
+  hgfhhhg {{safeSize i} {safeSize i}}
+  addUserKnob {14 safeSize R 0 100}
+  safeSize {0.1 0.05}
+ }
+set N3ccbea00 [stack 0]
+ Merge2 {
+  inputs 2
+  operation xor
+  name Merge2
+  xpos -945
+  ypos 189
+ }
+ EdgeDetectWrapper {
+  channels alpha
+  name EdgeDetectWrapper1
+  xpos -945
+  ypos 361
+ }
+ Shuffle {
+  red alpha
+  green alpha
+  blue alpha
+  name Shuffle5
+  xpos -945
+  ypos 417
+ }
+ Multiply {
+  value {{safeInput.drawLines i}}
+  name drawLinesMult
+  xpos -945
+  ypos 457
+ }
+push $N2d4bbe0
+ Dot {
+  name Dot2
+  xpos -1116
+  ypos -180
+ }
+ Shuffle {
+  red black
+  green black
+  blue black
+  alpha black
+  name Shuffle1
+  xpos -1150
+  ypos 235
+ }
+set N3cce3b70 [stack 0]
+ Text {
+  message "Action Safe \[value safeInput.actionSafe.w]% x \[value safeInput.actionSafe.h]%\n"
+  font "\[python \{gizmoSupport\} ]/Arial.ttf"
+  size {{"height / 25" i}}
+  xjustify center
+  yjustify center
+  Transform 1
+  box {0 0 {width i} {height i}}
+  translate {{"(-width/2) +  (width * ((safeInput.actionSafe.w ) / 100))" i} 0}
+  rotate -90
+  center {{"width / 2" i} {"height / 2" i}}
+  name actionSafeTxt
+  xpos -1211
+  ypos 292
+ }
+push $N3cce3b70
+ Text {
+  message "Text Safe \[value safeInput.txtSafe.w]% x \[value safeInput.txtSafe.h]%\n"
+  font "\[python \{gizmoSupport\} ]/Arial.ttf"
+  size {{"height / 25" i x69 54}}
+  xjustify center
+  yjustify center
+  Transform 1
+  box {0 0 {width i} {height i}}
+  translate {{"(-width/2) +  (width * ((safeInput.txtSafe.w ) / 100))" i x69 -864} 0}
+  rotate -90
+  center {{"width / 2" i} {"height / 2" i}}
+  name txtSafeTxt
+  xpos -1092
+  ypos 289
+ }
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge1
+  xpos -1147
+  ypos 342
+ }
+ Multiply {
+  value {{safeInput.drawTxt i}}
+  name drawTextMult
+  xpos -1147
+  ypos 394
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  xpos -945
+  ypos 635
+ }
+set N379131d0 [stack 0]
+push $N379131d0
+ Shuffle {
+  red black
+  green black
+  blue black
+  name Shuffle4
+  xpos -875
+  ypos 704
+ }
+ Transform {
+  translate {4 -4}
+  center {960 540}
+  name Transform4
+  xpos -875
+  ypos 742
+ }
+ Blur {
+  size 4.4
+  name Blur1
+  xpos -875
+  ypos 780
+ }
+ Merge2 {
+  inputs 2
+  name Merge3
+  xpos -945
+  ypos 858
+ }
+push $N2d4bbe0
+ Shuffle {
+  red white
+  green white
+  blue white
+  alpha white
+  name Shuffle6
+  xpos -686
+  ypos -110
+ }
+ Multiply {
+  value 0.85
+  name Multiply3
+  xpos -686
+  ypos -19
+ }
+push $N3ccbea00
+ Merge2 {
+  inputs 2
+  operation out
+  name Merge7
+  xpos -686
+  ypos 76
+ }
+push $N1dc746a0
+ Multiply {
+  value 0.5
+  name Multiply2
+  xpos -799
+  ypos 86
+ }
+ Merge2 {
+  inputs 2
+  operation out
+  name Merge5
+  xpos -686
+  ypos 146
+ }
+ Shuffle {
+  red black
+  green black
+  blue black
+  name Shuffle7
+  xpos -686
+  ypos 415
+ }
+ Multiply {
+  value {{safeInput.drawShading i}}
+  name drawShadingMult
+  xpos -686
+  ypos 465
+ }
+ Merge2 {
+  inputs 2
+  name Merge8
+  xpos -686
+  ypos 983
+ }
+push $N2d4bbe0
+ Merge2 {
+  inputs 2
+  bbox B
+  name Merge6
+  xpos -523
+  ypos 1066
+ }
+ NoOp {
+  name safeZonesOutput
+  xpos -523
+  ypos 1123
+ }
+ Output {
+  name Output1
+  xpos -523
+  ypos 1223
+ }
+push $N3ccb46c0
+ Viewer {
+  frame 2
+  fps 25
+  input_process false
+  name Viewer1
+  xpos -278
+  ypos -391
+ }
+end_group

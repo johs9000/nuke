@@ -1,0 +1,116 @@
+#! /Applications/Nuke6.1v1-32/Nuke6.1v1.app/Contents/MacOS/Nuke6.1v1 -nx
+version 6.1 v1
+Gizmo {
+ help "Symmetry mirroring tool. \nHelpful when placing graphics."
+ addUserKnob {20 symmetryControls l "Symmetry Controls" -STARTLINE}
+ addUserKnob {41 mirrorKind l "Mirror Kind" T symetryCheckIn.mirrorKind}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -523
+  ypos -331
+ }
+ NoOp {
+  name symetryCheckIn
+  xpos -523
+  ypos -291
+  addUserKnob {20 User}
+  addUserKnob {4 mirrorKind l "Mirror Kind" M {None Horizontal Vertical Both ""}}
+  mirrorKind Both
+ }
+ Dot {
+  name Dot2
+  xpos -489
+  ypos -223
+ }
+set N1e8a4040 [stack 0]
+ Mirror {
+  Horizontal true
+  name Mirror1
+  xpos -717
+  ypos -169
+ }
+ Multiply {
+  value 0.5
+  name Multiply1
+  xpos -717
+  ypos -112
+ }
+push $N1e8a4040
+ Multiply {
+  value 0.5
+  name Multiply2
+  xpos -589
+  ypos -99
+ }
+set N1e8534e0 [stack 0]
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge1
+  xpos -659
+ }
+set N1e856f50 [stack 0]
+ Dot {
+  name Dot1
+  xpos -625
+  ypos 105
+ }
+set N1e85bf40 [stack 0]
+ Mirror {
+  Vertical true
+  name Mirror2
+  xpos -745
+  ypos 145
+ }
+ Multiply {
+  value 0.5
+  name Multiply3
+  xpos -745
+  ypos 191
+ }
+push $N1e85bf40
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge2
+  xpos -659
+  ypos 255
+ }
+push $N1e8a4040
+ Mirror {
+  Vertical true
+  name Mirror4
+  xpos -403
+  ypos -154
+ }
+ Multiply {
+  value 0.5
+  name Multiply5
+  xpos -403
+  ypos -100
+ }
+push $N1e8534e0
+ Merge2 {
+  inputs 2
+  operation plus
+  name Merge4
+  xpos -452
+  ypos 13
+ }
+push $N1e856f50
+push $N1e8a4040
+ Switch {
+  inputs 4
+  which {{symetryCheckIn.mirrorKind x1 0}}
+  name Switch1
+  xpos -523
+  ypos 329
+ }
+ Output {
+  name Output1
+  xpos -523
+  ypos 429
+ }
+end_group
