@@ -29,9 +29,16 @@ jm_gradientAnalyzer:
 <br>
 
 
-jm_showDirtyAlpha2
+jm_showDirtyAlpha2:
 <p align="left">
 <img src="jm_showDirtyAlpha2\jm_showDirtyAlpha2.jpg">
+</p>
+<br>
+
+
+jm_safeZones:
+<p align="left">
+<img src="jm_safeZones\jm_safeZones.jpg">
 </p>
 <br>
 
