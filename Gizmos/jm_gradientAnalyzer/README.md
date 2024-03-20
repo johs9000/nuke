@@ -17,12 +17,12 @@ Tested back to Nuke 12 on windows, but should work with other versions as well.
 
 
 <p align="center">
-<img src="jm_gradientAnalyzer.png">
+<img src="jm_gradientAnalyzer.jpg">
 </p>
 
 
 <p align="center">
-<img src="jm_gradientAnalyzer.png">
+<img src="jm_gradientAnalyzer_UI.png">
 </p>
 
 

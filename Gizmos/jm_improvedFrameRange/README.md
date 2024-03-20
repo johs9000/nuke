@@ -5,7 +5,7 @@ A tool good for plucking shots out of conformed sources, and for handling handle
 
 
 <p align="center">
-<img src="jm_improvedFrameRange_UI.png">
+<img src="jm_improvedFrameRange.png">
 </p>
 
 
