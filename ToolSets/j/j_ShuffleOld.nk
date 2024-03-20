@@ -1,0 +1,10 @@
+set cut_paste_input [stack 0]
+version 12.1 v1
+push $cut_paste_input
+Shuffle {
+ name ShuffleOld
+ label "\[value knob.in]"
+ selected true
+ xpos 131
+ ypos -1431
+}

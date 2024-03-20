@@ -1,0 +1,94 @@
+set cut_paste_input [stack 0]
+version 8.0 v3
+push $cut_paste_input
+Dot {
+name Dot22
+selected true
+xpos 4692
+ypos 3222
+}
+set N34d1f330 [stack 0]
+Shuffle {
+red alpha
+green alpha
+blue alpha
+name Shuffle13
+selected true
+xpos 4877
+ypos 3315
+}
+Shuffle {
+red black
+green black
+blue black
+name Shuffle14
+selected true
+xpos 4877
+ypos 3535
+}
+push $N34d1f330
+Shuffle {
+red blue
+green blue
+alpha blue
+name Shuffle15
+selected true
+xpos 4768
+ypos 3310
+}
+Shuffle {
+red black
+green black
+alpha black
+name Shuffle16
+selected true
+xpos 4768
+ypos 3537
+}
+push 0
+push $N34d1f330
+Shuffle {
+green red
+blue red
+alpha red
+name Shuffle17
+selected true
+xpos 4548
+ypos 3310
+}
+Shuffle {
+green black
+blue black
+alpha black
+name Shuffle18
+selected true
+xpos 4548
+ypos 3532
+}
+push $N34d1f330
+Shuffle {
+red green
+blue green
+alpha green
+name Shuffle19
+selected true
+xpos 4658
+ypos 3310
+}
+Shuffle {
+red black
+blue black
+alpha black
+name Shuffle20
+selected true
+xpos 4658
+ypos 3538
+}
+Merge2 {
+inputs 4+1
+operation plus
+name Merge44
+selected true
+xpos 4658
+ypos 3637
+}

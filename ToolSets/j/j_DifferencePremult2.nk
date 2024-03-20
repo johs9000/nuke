@@ -1,0 +1,65 @@
+set cut_paste_input [stack 0]
+version 10.5 v5
+push $cut_paste_input
+Dot {
+ name Dot7
+ selected true
+ xpos -916
+ ypos 545
+}
+set N9f736c70 [stack 0]
+Dot {
+ name Dot8
+ selected true
+ xpos -704
+ ypos 638
+}
+Dot {
+ name Dot9
+ selected true
+ xpos -704
+ ypos 736
+}
+set N9f7334d0 [stack 0]
+Dot {
+ name Dot10
+ selected true
+ xpos -577
+ ypos 791
+}
+Dot {
+ name Dot11
+ selected true
+ xpos -577
+ ypos 925
+}
+push $N9f7334d0
+Difference {
+ inputs 2
+ gain 1e+16
+ name Difference3
+ selected true
+ xpos -738
+ ypos 972
+}
+Premult {
+ name Premult1
+ selected true
+ xpos -738
+ ypos 1075
+}
+Dot {
+ name Dot12
+ selected true
+ xpos -704
+ ypos 1109
+}
+push $N9f736c70
+Merge2 {
+ inputs 2
+ name Merge2
+ label "\[value bbox]"
+ selected true
+ xpos -950
+ ypos 1218
+}

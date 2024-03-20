@@ -1,0 +1,15 @@
+set cut_paste_input [stack 0]
+version 10.0 v3
+push $cut_paste_input
+Text {
+ message "Write node python before render:\n\nnuke.toNode(\"Switch1\").knob(\"which\").setValue(1)"
+ font /Library/Fonts/Arial.ttf
+ xjustify center
+ yjustify center
+ box {0 0 {width} {height}}
+ center {960 540}
+ name writeNodePython
+ selected true
+ xpos -1560
+ ypos 2183
+}

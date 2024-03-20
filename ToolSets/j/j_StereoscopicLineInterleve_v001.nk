@@ -1,0 +1,80 @@
+set cut_paste_input [stack 0]
+version 8.0 v5
+CheckerBoard2 {
+ inputs 0
+ boxsize 1
+ color0 {0 0 0 0}
+ color1 {0 0 0 0}
+ color2 {1 1 1 1}
+ color3 {1 1 1 1}
+ linecolor 0.096
+ centerlinewidth 0
+ name CheckerBoard1
+ selected true
+ xpos -657
+ ypos 736
+}
+Invert {
+ name Invert1
+ selected true
+ xpos -657
+ ypos 831
+}
+set Neb4a750 [stack 0]
+push 0
+Dot {
+ name Dot2
+ selected true
+ xpos -499
+ ypos 669
+}
+Reformat {
+ name Reformat4
+ selected true
+ xpos -533
+ ypos 834
+}
+Merge2 {
+ inputs 2
+ operation stencil
+ name Merge3
+ selected true
+ xpos -590
+ ypos 892
+}
+push $Neb4a750
+push $cut_paste_input
+Dot {
+ name Dot1
+ selected true
+ xpos -756
+ ypos 670
+}
+Reformat {
+ name Reformat3
+ selected true
+ xpos -790
+ ypos 834
+}
+Merge2 {
+ inputs 2
+ operation mask
+ name Merge2
+ selected true
+ xpos -730
+ ypos 891
+}
+Merge2 {
+ inputs 2
+ name Merge4
+ selected true
+ xpos -655
+ ypos 944
+}
+Crop {
+ box {20 0 1900 1080}
+ name Crop3
+ selected true
+ xpos -655
+ ypos 1000
+}

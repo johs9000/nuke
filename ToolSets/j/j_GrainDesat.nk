@@ -1,0 +1,74 @@
+set cut_paste_input [stack 0]
+version 10.5 v5
+push $cut_paste_input
+Unpremult {
+ name Unpremult3
+ selected true
+ xpos 409
+ ypos 780
+}
+Dot {
+ name Dot7
+ selected true
+ xpos 443
+ ypos 830
+}
+set N40b409a0 [stack 0]
+push $N40b409a0
+Grain2 {
+ name Grain2_3
+ label "Kodak 5248"
+ selected true
+ xpos 507
+ ypos 885
+ red_size 1.65
+ green_size 2.25
+ blue_size 1.7
+ red_i 0.238
+ green_i 0.434
+ red_m 0.03
+ green_m 0.034
+ blue_m 0.064
+ black {0.02 0.007 0.006}
+ minimum {0 0 0}
+ maskgrain false
+}
+Merge2 {
+ inputs 2
+ operation from
+ name Merge8
+ label "\[value bbox]"
+ selected true
+ xpos 507
+ ypos 953
+}
+ColorCorrect {
+ saturation 0.69
+ name ColorCorrect1
+ selected true
+ xpos 507
+ ypos 1004
+}
+Shuffle {
+ alpha black
+ name Shuffle1
+ selected true
+ xpos 507
+ ypos 1044
+}
+push $N40b409a0
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge9
+ label "\[value bbox]"
+ selected true
+ xpos 409
+ ypos 1086
+}
+Premult {
+ name Premult4
+ selected true
+ xpos 409
+ ypos 1142
+}

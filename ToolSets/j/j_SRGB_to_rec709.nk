@@ -1,0 +1,17 @@
+set cut_paste_input [stack 0]
+version 8.0 v6
+push $cut_paste_input
+Colorspace {
+colorspace_out sRGB
+name Colorspace5
+selected true
+xpos 400
+ypos 1159
+}
+Colorspace {
+colorspace_in rec709
+name Colorspace6
+selected true
+xpos 400
+ypos 1220
+}

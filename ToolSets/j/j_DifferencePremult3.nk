@@ -1,0 +1,175 @@
+set cut_paste_input [stack 0]
+version 11.3 v2
+push $cut_paste_input
+Dot {
+name Dot15
+selected true
+xpos 1109
+ypos 668
+}
+set N3e38ea20 [stack 0]
+OCIOFileTransform {
+file /Volumes/wXsan/wStock/nonMedia/LUTs/alexa_scratch/AlexaV3_K1S1_LogC2Video_Rec709_EE_scratch3d.3dl
+working_space rec709
+name OCIOFileTransform7
+selected true
+xpos 780
+ypos 722
+}
+ColorCorrect {
+name ColorCorrect1
+selected true
+xpos 780
+ypos 776
+}
+Tracker4 {
+cornerPinOptions "Transform (match-move)"
+adjust_for_luminance_changes true
+transform stabilize
+center {1600 900}
+name Tracker3
+label "\[value transform]"
+selected true
+xpos 780
+ypos 831
+}
+push $N3e38ea20
+Dot {
+name Dot17
+selected true
+xpos 1109
+ypos 924
+}
+set Ncc09cb50 [stack 0]
+Dot {
+name Dot18
+selected true
+xpos 1321
+ypos 1014
+}
+Transform {
+translate {{"(!invert) ? Tracker3.translate.x : -Tracker3.translate.x"} {"(!invert) ? Tracker3.translate.y : -Tracker3.translate.y"}}
+rotate {{"(!invert) ? Tracker3.rotate : -Tracker3.rotate"}}
+scale {{"(!invert) ? Tracker3.scale.w : 1/Tracker3.scale.w"} {"(!invert) ? Tracker3.scale.h : 1/Tracker3.scale.h"}}
+center {{"(!invert) ? Tracker3.center.x : Tracker3.center.x + Tracker3.translate.x"} {"(!invert) ? Tracker3.center.y : Tracker3.center.y + Tracker3.translate.y"}}
+filter {{Tracker3.filter}}
+name Transform_Stabilize3
+selected true
+xpos 1287
+ypos 1092
+addUserKnob {20 User}
+addUserKnob {4 transform M {stabilize match-move}}
+addUserKnob {4 src_transform l "src transform" M {none stabilize "stabilize 1-pt" match-move "match-move 1-pt" "remove jitter"}}
+src_transform {{Tracker3.transform}}
+addUserKnob {6 invert -STARTLINE}
+invert {{"\[python -execlocal srcTransformKnob\\ =\\ nuke.thisNode()\\\['src\\_transform'\\]\\nsrcTransformName\\ =\\ srcTransformKnob.enumName(int(srcTransformKnob.getValue()))\\ndestTransform\\ =\\ nuke.thisNode()\\\['transform'\\].getValue()\\nsrcTransformIsStabilize\\ =\\ (srcTransformName.find('stabilize')==0\\ or\\ srcTransformName.find('remove\\ jitter')==0)\\ninvertDueToDestStabilize\\ =\\ (destTransform\\ ==\\ 0\\ and\\ not\\ srcTransformIsStabilize)\\ninvertDueToSrcStabilize\\ =\\ (destTransform\\ ==\\ 1\\ and\\ srcTransformIsStabilize)\\nret\\ =\\ (invertDueToDestStabilize\\ or\\ invertDueToSrcStabilize)]"}}
+}
+Dot {
+name Dot19
+selected true
+xpos 1321
+ypos 1159
+}
+set Nc49e9380 [stack 0]
+Dot {
+name Dot20
+selected true
+xpos 1448
+ypos 1221
+}
+Dot {
+name Dot21
+selected true
+xpos 1448
+ypos 1355
+}
+push $Nc49e9380
+Dot {
+name Dot22
+selected true
+xpos 1321
+ypos 1356
+}
+set Ncc0999e0 [stack 0]
+Difference {
+inputs 2
+gain 1e+10
+name Difference2
+selected true
+xpos 1287
+ypos 1410
+}
+Transform {
+translate {{"(!invert) ? Tracker3.translate.x : -Tracker3.translate.x"} {"(!invert) ? Tracker3.translate.y : -Tracker3.translate.y"}}
+rotate {{"(!invert) ? Tracker3.rotate : -Tracker3.rotate"}}
+scale {{"(!invert) ? Tracker3.scale.w : 1/Tracker3.scale.w"} {"(!invert) ? Tracker3.scale.h : 1/Tracker3.scale.h"}}
+center {{"(!invert) ? Tracker3.center.x : Tracker3.center.x + Tracker3.translate.x"} {"(!invert) ? Tracker3.center.y : Tracker3.center.y + Tracker3.translate.y"}}
+filter {{Tracker3.filter}}
+name Transform_MatchMove3
+selected true
+xpos 1287
+ypos 1489
+addUserKnob {20 User}
+addUserKnob {4 transform M {stabilize match-move}}
+transform match-move
+addUserKnob {4 src_transform l "src transform" M {none stabilize "stabilize 1-pt" match-move "match-move 1-pt" "remove jitter"}}
+src_transform {{Tracker3.transform}}
+addUserKnob {6 invert -STARTLINE}
+invert {{"\[python -execlocal srcTransformKnob\\ =\\ nuke.thisNode()\\\['src\\_transform'\\]\\nsrcTransformName\\ =\\ srcTransformKnob.enumName(int(srcTransformKnob.getValue()))\\ndestTransform\\ =\\ nuke.thisNode()\\\['transform'\\].getValue()\\nsrcTransformIsStabilize\\ =\\ (srcTransformName.find('stabilize')==0\\ or\\ srcTransformName.find('remove\\ jitter')==0)\\ninvertDueToDestStabilize\\ =\\ (destTransform\\ ==\\ 0\\ and\\ not\\ srcTransformIsStabilize)\\ninvertDueToSrcStabilize\\ =\\ (destTransform\\ ==\\ 1\\ and\\ srcTransformIsStabilize)\\nret\\ =\\ (invertDueToDestStabilize\\ or\\ invertDueToSrcStabilize)]"}}
+}
+set N5b4db660 [stack 0]
+L_ExponBlur_v03_3_0 {
+name L_ExponBlur_v03_3_0_3
+selected true
+xpos 1371
+ypos 1565
+disable true
+size 2.9
+Multiplier 1.92
+}
+push $N5b4db660
+ShuffleCopy {
+inputs 2
+name ShuffleCopy3
+selected true
+xpos 1287
+ypos 1622
+}
+Premult {
+name Premult3
+selected true
+xpos 1287
+ypos 1714
+}
+Dot {
+name Dot23
+selected true
+xpos 1321
+ypos 1791
+}
+push $Ncc09cb50
+Merge2 {
+inputs 2
+name Merge3
+label "\[value bbox]"
+selected true
+xpos 1075
+ypos 1901
+}
+OCIOFileTransform {
+file /Volumes/wXsan/wStock/nonMedia/LUTs/alexa_scratch/AlexaV3_K1S1_LogC2Video_Rec709_EE_scratch3d.3dl
+working_space rec709
+name OCIOFileTransform8
+selected true
+xpos 1415
+ypos 2133
+}
+push $Ncc0999e0
+OCIOFileTransform {
+file /Volumes/wXsan/wStock/nonMedia/LUTs/alexa_scratch/AlexaV3_K1S1_LogC2Video_Rec709_EE_scratch3d.3dl
+working_space rec709
+name OCIOFileTransform9
+selected true
+xpos 1708
+ypos 1653
+}

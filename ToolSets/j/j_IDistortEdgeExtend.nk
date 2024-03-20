@@ -1,0 +1,176 @@
+set cut_paste_input [stack 0]
+version 10.0 v3
+push $cut_paste_input
+Dot {
+ name Dot10
+ selected true
+ xpos -4821
+ ypos 710
+}
+set N1ec57e50 [stack 0]
+Blur {
+ channels alpha
+ size 6
+ name Blur3
+ selected true
+ xpos -5185
+ ypos 834
+}
+set N1266d610 [stack 0]
+Dot {
+ name Dot7
+ selected true
+ xpos -5016
+ ypos 927
+}
+set N1ec14630 [stack 0]
+Transform {
+ translate {0 {parent.Transform2.translate.x}}
+ center {960 540}
+ name Transform4
+ selected true
+ xpos -5118
+ ypos 983
+}
+push $N1ec14630
+Transform {
+ translate {0 {-parent.Transform2.translate.x}}
+ center {960 540}
+ name Transform3
+ selected true
+ xpos -4980
+ ypos 982
+}
+Merge2 {
+ inputs 2
+ operation from
+ name Merge10
+ selected true
+ xpos -5044
+ ypos 1045
+}
+push $N1266d610
+Dot {
+ name Dot6
+ selected true
+ xpos -5290
+ ypos 930
+}
+set N171a3d80 [stack 0]
+Transform {
+ translate {1 0}
+ center {960 540}
+ name Transform2
+ selected true
+ xpos -5397
+ ypos 979
+}
+push $N171a3d80
+Transform {
+ translate {{-parent.Transform2.translate.x} 0}
+ center {960 540}
+ name Transform1
+ selected true
+ xpos -5255
+ ypos 979
+}
+Merge2 {
+ inputs 2
+ operation from
+ name Merge9
+ selected true
+ xpos -5326
+ ypos 1038
+}
+ShuffleCopy {
+ inputs 2
+ red alpha2
+ green alpha
+ blue black
+ alpha black
+ name ShuffleCopy3
+ selected true
+ xpos -5177
+ ypos 1155
+}
+push $N1ec57e50
+ShuffleCopy {
+ inputs 2
+ alpha alpha2
+ black red
+ white green
+ out2 forward
+ name ShuffleCopy4
+ selected true
+ xpos -4855
+ ypos 1241
+}
+set N171db6b0 [stack 0]
+Dot {
+ name Dot8
+ selected true
+ xpos -4821
+ ypos 1554
+}
+set N4e7ec4d0 [stack 0]
+Dot {
+ name Dot11
+ selected true
+ xpos -4705
+ ypos 1656
+}
+push $N171db6b0
+IDistort {
+ uv forward
+ uv_scale 6
+ blur_scale 0
+ name IDistort1
+ selected true
+ xpos -5087
+ ypos 1333
+}
+FilterErode {
+ channels alpha
+ size 2
+ filter gaussian
+ name FilterErode1
+ selected true
+ xpos -5087
+ ypos 1399
+}
+Invert {
+ channels alpha
+ name Invert1
+ selected true
+ xpos -5087
+ ypos 1465
+}
+Blur {
+ channels alpha
+ size 2
+ name Blur4
+ selected true
+ xpos -5087
+ ypos 1527
+}
+Premult {
+ name Premult2
+ selected true
+ xpos -5087
+ ypos 1589
+}
+push $N4e7ec4d0
+Merge2 {
+ inputs 2
+ name Merge11
+ selected true
+ xpos -4855
+ ypos 1658
+}
+ShuffleCopy {
+ inputs 2
+ name ShuffleCopy5
+ selected true
+ xpos -4855
+ ypos 1768
+}

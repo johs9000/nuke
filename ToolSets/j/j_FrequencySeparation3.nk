@@ -1,0 +1,76 @@
+set cut_paste_input [stack 0]
+version 11.3 v4
+push $cut_paste_input
+Dot {
+ name Dot13
+ selected true
+ xpos 3070
+ ypos 622
+}
+set N3e82e520 [stack 0]
+Laplacian {
+ name Laplacian3
+ selected true
+ xpos 3410
+ ypos 752
+}
+set Ndbc1c2f0 [stack 0]
+Dot {
+ name Dot14
+ selected true
+ xpos 3444
+ ypos 1542
+}
+push $Ndbc1c2f0
+push $N3e82e520
+Merge2 {
+ inputs 2
+ operation from
+ name Merge10
+ label "\[value bbox]"
+ selected true
+ xpos 3036
+ ypos 827
+}
+set Ndbc18380 [stack 0]
+Laplacian {
+ size 30
+ name Laplacian4
+ selected true
+ xpos 3233
+ ypos 924
+}
+set Ndbc07500 [stack 0]
+Dot {
+ name Dot15
+ selected true
+ xpos 3267
+ ypos 1371
+}
+push $Ndbc07500
+push $Ndbc18380
+Merge2 {
+ inputs 2
+ operation from
+ name Merge11
+ label "\[value bbox]"
+ selected true
+ xpos 3036
+ ypos 1002
+}
+Merge2 {
+ inputs 2
+ name Merge12
+ label "\[value bbox]"
+ selected true
+ xpos 3036
+ ypos 1443
+}
+Merge2 {
+ inputs 2
+ name Merge13
+ label "\[value bbox]"
+ selected true
+ xpos 3036
+ ypos 1672
+}

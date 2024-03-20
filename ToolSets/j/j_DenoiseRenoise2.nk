@@ -1,0 +1,116 @@
+set cut_paste_input [stack 0]
+version 13.2 v3
+push $cut_paste_input
+Dot {
+name Dot32
+selected true
+xpos -5884
+ypos -1704
+}
+set N65d0cc00 [stack 0]
+Dot {
+name Dot33
+selected true
+xpos -6107
+ypos -1595
+}
+Denoise2 {
+analysisRegion {1016 801.4000244 1193.400024 974}
+analysisFrame 13
+needsAnalyzing false
+profileCurve {profile {curve 0 x0.125 0 0 0 0 0 0 0 0}}
+serializeKnob "1.212229967e+00 6.047610044e-01 3.978700042e-01
+3.921269905e-03 4.970789887e-03 2.610099968e-03
+3.921269905e-03 4.970789887e-03 2.610099968e-03
+3.237660043e-03 2.786470111e-03 1.557769952e-03
+0.000000000e+00 0.000000000e+00 0.000000000e+00
+1.900000032e-03 3.206779948e-03 1.490600058e-03
+1.900000032e-03 3.206779948e-03 1.490600058e-03
+1.145599992e-03 2.105260035e-03 9.930829983e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00
+1.003509969e-03 1.745810034e-03 7.731370279e-04
+1.003509969e-03 1.745810034e-03 7.731370279e-04
+4.812469997e-04 1.047709957e-03 4.883739748e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00
+5.052919732e-04 6.115990109e-04 3.234730102e-04
+5.052919732e-04 6.115990109e-04 3.234730102e-04
+2.885629947e-04 4.193680070e-04 2.616290003e-04
+0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 0.000000000e+00 
+4022722105609032536"
+name Denoise3
+selected true
+xpos -6141
+ypos -1532
+}
+Dot {
+name Dot38
+selected true
+xpos -6107
+ypos -1267
+}
+set N6595d000 [stack 0]
+push $N65d0cc00
+Dot {
+name Dot36
+selected true
+xpos -5884
+ypos -1267
+}
+set N6f5e5000 [stack 0]
+Merge2 {
+inputs 2
+operation from
+name Merge15
+selected true
+xpos -6141
+ypos -1121
+}
+push $N6f5e5000
+push $N6595d000
+CopyMetaData {
+inputs 2
+mergeMode "Meta only"
+name CopyMetaData_useDNPlateAndOrgMetadata
+selected true
+xpos -5918
+ypos -1121
+}
+add_layer {noise noise.red noise.green noise.blue noise.alpha}
+ShuffleCopy {
+inputs 2
+alpha alpha2
+black red
+white green
+red2 blue
+green2 black
+out2 noise
+name ShuffleCopy_noiseToNoiseCh
+label "\[value knob.in] --> \[value knob.out]\n\[value knob.in2] --> \[value knob.out2]\n"
+selected true
+xpos -5918
+ypos -999
+}
+Dot {
+name Dot37
+selected true
+xpos -5884
+ypos -612
+}
+set N6136f000 [stack 0]
+Shuffle {
+in noise
+name Shuffle4
+label "\[value knob.in] --> \[value knob.out]"
+selected true
+xpos -6034
+ypos -580
+}
+push $N6136f000
+Merge2 {
+inputs 2
+operation plus
+name Merge_reAddExtractedNoise
+selected true
+xpos -5918
+ypos -506
+}

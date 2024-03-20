@@ -1,0 +1,23 @@
+set cut_paste_input [stack 0]
+version 13.1 v2
+push $cut_paste_input
+CornerPin2D {
+ to1 {{"from1.x - flareBottom"} {"from1.y - flareLeft"}}
+ to2 {{"from2.x + flareBottom"} {"from2.y - flareRight"}}
+ to3 {{"from3.x + flareTop"} {"from3.y + flareRight "}}
+ to4 {{"from4.x - flareTop"} {"from4.y + flareLeft"}}
+ invert false
+ from1 {0 0}
+ from2 {2048 0}
+ from3 {2048 1080}
+ from4 {0 1080}
+ name CornerPin2D_flare
+ selected true
+ xpos -1475
+ ypos 3625
+ addUserKnob {20 User}
+ addUserKnob {7 flareTop R 0 500}
+ addUserKnob {7 flareRight R 0 500}
+ addUserKnob {7 flareBottom R 0 500}
+ addUserKnob {7 flareLeft R 0 500}
+}

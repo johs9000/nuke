@@ -1,0 +1,65 @@
+set cut_paste_input [stack 0]
+version 12.2 v7
+push $cut_paste_input
+Dot {
+ name Dot3
+ selected true
+ xpos 294
+ ypos -189
+}
+set Na4c23800 [stack 0]
+Dot {
+ name Dot2
+ selected true
+ xpos 142
+ ypos -134
+}
+Colorspace {
+ colorspace_out Cineon
+ name Colorspace2
+ selected true
+ xpos 108
+ ypos -91
+}
+set N3dae1000 [stack 0]
+Blur {
+ name Blur3
+ selected true
+ xpos 59
+ ypos -27
+}
+push $N3dae1000
+Blur {
+ size 20
+ name Blur4
+ selected true
+ xpos 160
+ ypos -28
+}
+Merge2 {
+ inputs 2
+ operation minus
+ name Merge2
+ selected true
+ xpos 113
+ ypos 40
+}
+ColorCorrect {
+ saturation 0
+ gain 5
+ offset 0.5
+ name ColorCorrect1
+ selected true
+ xpos 113
+ ypos 131
+}
+push $Na4c23800
+Merge2 {
+ inputs 2
+ operation overlay
+ name Merge3
+ label "\[value bbox]"
+ selected true
+ xpos 260
+ ypos 185
+}

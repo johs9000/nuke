@@ -1,0 +1,60 @@
+set cut_paste_input [stack 0]
+version 11.3 v4
+Unpremult {
+ inputs 0
+ name Unpremult5
+ selected true
+ xpos -163
+ ypos -82
+}
+Colorspace {
+ colorspace_out 2.20
+ name Colorspace7
+ label "FG to source colorspace (sRGB) - UNPREMULTIPLIED!!!\n"
+ selected true
+ xpos -163
+ ypos -2
+}
+Premult {
+ name Premult18
+ selected true
+ xpos -163
+ ypos 86
+}
+Dot {
+ name Dot169
+ selected true
+ xpos -129
+ ypos 166.5
+}
+push $cut_paste_input
+Colorspace {
+ colorspace_out 2.20
+ name Colorspace5
+ label "BG to source colorspace (sRGB)"
+ selected true
+ xpos 179
+ ypos -1
+}
+Dot {
+ name Dot168
+ selected true
+ xpos 213
+ ypos 169.5
+}
+Merge2 {
+ inputs 2
+ name Merge44
+ label "\[value bbox]\nMerge in source colorspace (sRGB)"
+ selected true
+ xpos 13
+ ypos 242
+}
+Colorspace {
+ colorspace_in 2.20
+ name Colorspace6
+ label "Back to Lin"
+ selected true
+ xpos 13
+ ypos 340
+}

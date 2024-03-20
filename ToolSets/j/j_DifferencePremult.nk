@@ -1,0 +1,37 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Dot {
+name Dot20
+selected true
+xpos 4470
+ypos 534
+}
+set Nf3cabc90 [stack 0]
+Dot {
+name Dot21
+selected true
+xpos 4597
+ypos 589
+}
+Dot {
+name Dot22
+selected true
+xpos 4597
+ypos 694
+}
+push $Nf3cabc90
+Difference {
+inputs 2
+gain 1e+16
+name Difference2
+selected true
+xpos 4436
+ypos 741
+}
+Premult {
+name Premult2
+selected true
+xpos 4436
+ypos 824
+}

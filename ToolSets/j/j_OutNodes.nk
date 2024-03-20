@@ -1,0 +1,52 @@
+set cut_paste_input [stack 0]
+version 11.3 v4
+push $cut_paste_input
+Shuffle {
+ alpha white
+ name OUT_Shuffle_alphaWhite
+ label "\[value knob.in] --> \[value knob.out]"
+ selected true
+ xpos 1645
+ ypos 244
+}
+Remove {
+ operation keep
+ channels rgba
+ name OUT_Remove_keepRGBA
+ selected true
+ xpos 1645
+ ypos 276
+}
+Crop {
+ box {0 0 {width} {height}}
+ crop false
+ name OUT_CropBBoxToImgSize
+ selected true
+ xpos 1645
+ ypos 298
+}
+Clamp {
+ name OUT_Clamp
+ selected true
+ xpos 1645
+ ypos 323
+}
+ModifyMetaData {
+ metadata {
+  {set WPComp "\[value root.name]"}
+ }
+ name OUT_addMetaData
+ selected true
+ xpos 1645
+ ypos 356
+}
+FrameRange {
+ first_frame 1
+ last_frame 1
+ time ""
+ name OUT_FrameRange
+ label "Remember to set the render range !!!\n\[value knob.first_frame] - \[value knob.last_frame]"
+ selected true
+ xpos 1645
+ ypos 405
+}

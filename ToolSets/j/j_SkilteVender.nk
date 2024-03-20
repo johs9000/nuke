@@ -1,0 +1,82 @@
+set cut_paste_input [stack 0]
+version 8.0 v4
+Mirror {
+ inputs 0
+ Horizontal true
+ name Mirror3
+ selected true
+ xpos -1289
+ ypos -275
+}
+Dot {
+ name Dot2
+ selected true
+ xpos -1255
+ ypos -226
+}
+push $cut_paste_input
+Dot {
+ name Dot1
+ selected true
+ xpos -1575
+ ypos -231
+}
+Dissolve {
+ inputs 2
+ which {{parent.skilteVenderMaster.skiltDissolve}}
+ name Dissolve1
+ selected true
+ xpos -1452
+ ypos -142
+}
+Transform {
+ center {960 540}
+ name perspectiveOffset
+ selected true
+ xpos -1452
+ ypos -41
+}
+Card3D {
+ rotate {{parent.skilteVenderMaster.skiltRotate} {parent.skilteVenderMaster.skiltRotate} {parent.skilteVenderMaster.skiltRotate}}
+ name skilteVender
+ selected true
+ xpos -1452
+ ypos 46
+}
+Transform {
+ translate {{parent.perspectiveOffset.translate.x} {parent.perspectiveOffset.translate.y}}
+ rotate {{parent.perspectiveOffset.rotate}}
+ scale {{parent.perspectiveOffset.scale}}
+ center {960 540}
+ invert_matrix true
+ name perspectiveOffset_invert
+ selected true
+ xpos -1452
+ ypos 123
+}
+TimeBlur {
+ divisions {{parent.skilteVenderMaster.motionBlurResult}}
+ shutteroffset centred
+ shuttercustomoffset 0
+ name skilteTimeBlur
+ selected true
+ xpos -1452
+ ypos 202
+}
+NoOp {
+ name skilteVenderMaster
+ selected true
+ xpos -1452
+ ypos 276
+ addUserKnob {20 User}
+ addUserKnob {13 skiltRotate}
+ addUserKnob {7 transformDif l INVISIBLE +INVISIBLE R 0 100}
+ transformDif {{"abs((skilteVender.rotate.x(frame+1) - skilteVender.rotate.x(frame-1))) + abs((skilteVender.rotate.y(frame+1) - skilteVender.rotate.y(frame-1))) + abs((skilteVender.rotate.z(frame+1) - skilteVender.rotate.z(frame-1)))"}}
+ addUserKnob {7 skiltDissolve R 0 10}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {7 motionblurMultiplyer R 0 100}
+ motionblurMultiplyer 5
+ addUserKnob {7 motionblurOffset R 0 100}
+ addUserKnob {7 motionBlurResult R 0 100}
+ motionBlurResult {{"(parent.skilteVenderMaster.transformDif * parent.skilteVenderMaster.motionblurMultiplyer) + parent.skilteVenderMaster.motionblurOffset"}}
+}

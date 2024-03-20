@@ -1,0 +1,10 @@
+set cut_paste_input [stack 0]
+version 12.1 v1
+push $cut_paste_input
+ShuffleCopy {
+ name ShuffleCopyOld1
+ label "\[value knob.in]\n\[value knob.in2]\n"
+ selected true
+ xpos -4
+ ypos -1378
+}

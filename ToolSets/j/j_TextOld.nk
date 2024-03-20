@@ -1,0 +1,14 @@
+set cut_paste_input [stack 0]
+version 12.1 v1
+push $cut_paste_input
+Text {
+ font /Library/Fonts/Arial.ttf
+ xjustify center
+ yjustify center
+ box {480 270 1440 810}
+ center {960 540}
+ name TextOld1
+ selected true
+ xpos -206
+ ypos -218
+}

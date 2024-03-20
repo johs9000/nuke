@@ -1,0 +1,16 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+Constant {
+inputs 0
+color {0 1 0 1}
+name ConstantMask1
+selected true
+xpos 9049
+ypos 1420
+}
+Multiply {
+name constMaskMultiply
+selected true
+xpos 9049
+ypos 1514
+}

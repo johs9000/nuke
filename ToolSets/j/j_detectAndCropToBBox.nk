@@ -1,0 +1,42 @@
+set cut_paste_input [stack 0]
+version 11.3 v4
+push $cut_paste_input
+Dot {
+ name Dot173
+ selected true
+ xpos 14884
+ ypos -9375
+}
+set N1f3e1a80 [stack 0]
+Crop {
+ box {{"detectBBox.autocropdata.x - BBoxOffset" x1 159} {"detectBBox.autocropdata.y - BBoxOffset" x1 400} {"detectBBox.autocropdata.r + BBoxOffset" x1 2944} {"detectBBox.autocropdata.t  + BBoxOffset" x1 3736}}
+ reformat true
+ crop false
+ name cropToBBox_withOffset
+ selected true
+ xpos 14850
+ ypos -9215
+ addUserKnob {20 User}
+ addUserKnob {7 BBoxOffset R 0 100}
+ BBoxOffset 20
+}
+push $N1f3e1a80
+FrameRange {
+ first_frame 1
+ last_frame 1
+ time ""
+ name bboxScanRange
+ label "\[value knob.first_frame] - \[value knob.last_frame]"
+ selected true
+ xpos 14966
+ ypos -9335
+}
+CurveTool {
+ operation "Auto Crop"
+ ROI {0 0 1920 1080}
+ autocropdata {0 0 1920 1080}
+ name detectBBox
+ selected true
+ xpos 14966
+ ypos -9276
+}

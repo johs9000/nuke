@@ -1,0 +1,11 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+OCIOFileTransform {
+file /Volumes/wXsan/wStock/nonMedia/LUTs/alexa_scratch/AlexaV3_K1S1_LogC2Video_Rec709_EE_scratch3d.3dl
+working_space rec709
+name OCIOFileTransform1
+selected true
+xpos 9539
+ypos 1357
+}

@@ -1,0 +1,12 @@
+set cut_paste_input [stack 0]
+version 10.5 v5
+push $cut_paste_input
+Crop {
+ box {0 138 1920 942}
+ reformat false
+ name HDCropToScope
+ label "Cinema Scope 1:2.39 i et HD frame\n"
+ selected true
+ xpos 1895
+ ypos 3576
+}

@@ -1,0 +1,48 @@
+set cut_paste_input [stack 0]
+version 11.2 v5
+push $cut_paste_input
+Dot {
+ name Dot3
+ selected true
+ xpos -334
+ ypos -90
+}
+set Nf22c21c0 [stack 0]
+Shuffle {
+ red alpha
+ green alpha
+ blue alpha
+ name Shuffle2
+ selected true
+ xpos -426
+ ypos -59
+}
+Colorspace {
+ colorspace_in Cineon
+ name Colorspace1
+ selected true
+ xpos -426
+ ypos -24
+}
+Blur {
+ name Blur4
+ selected true
+ xpos -426
+ ypos 12
+}
+Colorspace {
+ colorspace_out Cineon
+ name Colorspace2
+ selected true
+ xpos -426
+ ypos 55
+}
+push $Nf22c21c0
+ShuffleCopy {
+ inputs 2
+ alpha blue
+ name ShuffleCopy2
+ selected true
+ xpos -368
+ ypos 92
+}

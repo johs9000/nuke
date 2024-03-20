@@ -1,0 +1,70 @@
+set cut_paste_input [stack 0]
+version 9.0 v4
+push $cut_paste_input
+Dot {
+name Dot4
+selected true
+xpos -127
+ypos 732
+}
+set N6b7c7e70 [stack 0]
+Denoise2 {
+output Noise
+analysisRegion {1016 801.4000244 1193.400024 974}
+analysisFrame 13
+needsAnalyzing false
+profileCurve {profile {curve x0.1000000015 0 x0.1333521456 0 x0.1778279245 0 x0.2371373624 0 x0.3162277937 0 x0.4216964841 0 x0.5623412728 0 x0.7498942614 0 x1 0}}
+serializeKnob "1.21223 0.604761 0.39787
+0.00392127 0.00497079 0.0026101
+0.00392127 0.00497079 0.0026101
+0.00323766 0.00278647 0.00155777
+0 0 0
+0.0019 0.00320678 0.0014906
+0.0019 0.00320678 0.0014906
+0.0011456 0.00210526 0.000993083
+0 0 0
+0.00100351 0.00174581 0.000773137
+0.00100351 0.00174581 0.000773137
+0.000481247 0.00104771 0.000488374
+0 0 0
+0.000505292 0.000611599 0.000323473
+0.000505292 0.000611599 0.000323473
+0.000288563 0.000419368 0.000261629
+0 0 0 0 0 0 0 0 0 
+4022722105609032536"
+name Denoise1
+selected true
+xpos -294
+ypos 829
+}
+set N5ccd9430 [stack 0]
+Dot {
+name Dot5
+selected true
+xpos -262
+ypos 1029
+}
+push $N5ccd9430
+push $N6b7c7e70
+Merge2 {
+inputs 2
+operation from
+name Merge1
+selected true
+xpos -159
+ypos 846
+}
+Merge2 {
+inputs 2
+operation plus
+name Merge2
+selected true
+xpos -159
+ypos 1071
+}
+Dot {
+name Dot6
+selected true
+xpos -127
+ypos 1171
+}

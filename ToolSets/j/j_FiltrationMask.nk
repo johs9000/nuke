@@ -1,0 +1,106 @@
+set cut_paste_input [stack 0]
+version 11.3 v4
+CheckerBoard2 {
+ inputs 0
+ boxsize 1
+ color0 {1 0 0 1}
+ color1 {0 1 0 1}
+ color2 {1 0 0 1}
+ color3 {0 1 0 1}
+ linecolor 0
+ centerlinewidth 0
+ name CheckerBoard3
+ selected true
+ xpos 476
+ ypos -85
+}
+push $cut_paste_input
+Dot {
+ name Dot6
+ selected true
+ xpos 666
+ ypos -148
+}
+add_layer {util01 util01.red util01.green util01.blue util01.alpha}
+ShuffleCopy {
+ inputs 2
+ alpha alpha2
+ black red
+ white green
+ red2 blue
+ green2 alpha
+ out2 util01
+ name ShuffleCopy3
+ label "\[value knob.in] --> \[value knob.out]\n\[value knob.in2] --> \[value knob.out2]"
+ selected true
+ xpos 632
+ ypos -7
+}
+Dot {
+ name Dot8
+ selected true
+ xpos 666
+ ypos 91
+}
+Dot {
+ name Dot4
+ selected true
+ xpos 666
+ ypos 642
+}
+set Nb365a7f0 [stack 0]
+Dot {
+ name Dot5
+ selected true
+ xpos 459
+ ypos 699
+}
+set Nb365ccb0 [stack 0]
+Shuffle {
+ in util01
+ green red
+ blue red
+ alpha red
+ name Shuffle4
+ label "\[value knob.in] --> \[value knob.out]"
+ selected true
+ xpos 353
+ ypos 752
+}
+push $Nb365ccb0
+Shuffle {
+ in util01
+ red green
+ blue green
+ alpha green
+ name Shuffle5
+ label "\[value knob.in] --> \[value knob.out]"
+ selected true
+ xpos 498
+ ypos 753
+}
+Merge2 {
+ inputs 2
+ operation min
+ name Merge3
+ label "\[value bbox]"
+ selected true
+ xpos 427
+ ypos 822
+}
+Multiply {
+ value 2
+ name Multiply2
+ selected true
+ xpos 427
+ ypos 883
+}
+push $Nb365a7f0
+ShuffleCopy {
+ inputs 2
+ name ShuffleCopy4
+ label "\[value knob.in] --> \[value knob.out]\n\[value knob.in2] --> \[value knob.out2]"
+ selected true
+ xpos 632
+ ypos 933
+}

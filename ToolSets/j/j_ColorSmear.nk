@@ -1,0 +1,145 @@
+set cut_paste_input [stack 0]
+version 10.0 v3
+push $cut_paste_input
+Dot {
+name Dot30
+selected true
+xpos -11162
+ypos -224
+}
+set N6dd0a9b0 [stack 0]
+Blur {
+channels rgba
+size 10
+name extendWidth_blur
+selected true
+xpos -11452
+ypos -115
+}
+Unpremult {
+name Unpremult5
+selected true
+xpos -11452
+ypos -55
+}
+Blur {
+channels rgb
+name softenExtended_blur
+selected true
+xpos -11452
+ypos 4
+}
+Shuffle {
+alpha white
+name alphaWhite
+selected true
+xpos -11452
+ypos 66
+}
+set N59d99f50 [stack 0]
+Grain2 {
+name Grain2_2
+label "Kodak 5217"
+selected true
+xpos -11536
+ypos 122
+red_size 0.23
+green_size 1.2
+blue_size 1.4
+green_i 0.86
+red_m 0.48
+green_m 0.42
+blue_m 0.87
+minimum {0 0 0}
+maskgrain false
+}
+push $N6dd0a9b0
+Dot {
+name Dot31
+selected true
+xpos -11162
+ypos -87
+}
+set N47950200 [stack 0]
+Dot {
+name Dot36
+selected true
+xpos -11211
+ypos -61
+}
+set N6dea17f0 [stack 0]
+Blur {
+channels alpha
+name softenMask
+selected true
+xpos -11322
+ypos -30
+}
+ColorLookup {
+channels alpha
+lut {master {}
+  red {}
+  green {}
+  blue {}
+  alpha {curve L x0.5 0 s0 S x1 1}}
+name ColorLookup7
+selected true
+xpos -11322
+ypos 44
+}
+push $N6dea17f0
+Dot {
+name Dot33
+selected true
+xpos -11211
+ypos 81
+}
+Merge2 {
+inputs 2
+operation multiply
+Achannels {none none none rgba.alpha}
+Bchannels {none none none rgba.alpha}
+output {-rgba.red -rgba.green -rgba.blue rgba.alpha}
+name Merge53
+selected true
+xpos -11322
+ypos 118
+}
+push $N59d99f50
+Merge2 {
+inputs 2
+operation stencil
+name Merge50
+selected true
+xpos -11452
+ypos 200
+}
+push $N47950200
+Unpremult {
+name Unpremult6
+selected true
+xpos -11196
+ypos 188
+}
+Merge2 {
+inputs 2
+name Merge48
+selected true
+xpos -11196
+ypos 312
+}
+set N6dd30590 [stack 0]
+Dot {
+name Dot32
+selected true
+xpos -11162
+ypos 449
+}
+push $N6dd30590
+Shuffle {
+alpha white
+name alphaWhite1
+selected true
+xpos -11258
+ypos 364
+}

@@ -1,0 +1,28 @@
+set cut_paste_input [stack 0]
+version 9.0 v8
+push $cut_paste_input
+Colorspace {
+colorspace_out HSV
+name Colorspace_RGB2HSV
+selected true
+xpos -617
+ypos 1576
+}
+ColorLookup {
+lut {master {curve 0 1}
+  red {curve 0 1}
+  green {curve 0 1}
+  blue {curve 0 1}
+  alpha {curve 0 1}}
+name ColorLookup_HSV
+selected true
+xpos -617
+ypos 1614
+}
+Colorspace {
+colorspace_in HSV
+name Colorspace_HSV2RGB
+selected true
+xpos -617
+ypos 1654
+}

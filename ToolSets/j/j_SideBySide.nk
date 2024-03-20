@@ -1,0 +1,16 @@
+set cut_paste_input [stack 0]
+version 10.5 v5
+push 0
+push $cut_paste_input
+ContactSheet {
+ inputs 2
+ width {{width*columns}}
+ height 1080
+ rows 1
+ columns 2
+ center true
+ name sideByside
+ selected true
+ xpos 2790
+ ypos 3252
+}
