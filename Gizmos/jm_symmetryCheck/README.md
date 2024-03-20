@@ -10,7 +10,7 @@ lalalalalala
 
 
 <p align="center">
-<img src="jm_symmetryCheck.gif">
+<img src="jm_symmertyCheck.gif">
 </p>
 
 
