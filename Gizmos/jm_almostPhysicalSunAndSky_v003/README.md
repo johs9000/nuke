@@ -5,7 +5,9 @@ Generates an adjustable and animatable sun and sky background plate. Inspired by
 
 The gizmo outputs a sun and sky background plate or each element isolated. It can also output a spherical 3D scene or a 3D light
 
+
 There are built in controls for sun and sky control, simple color correcting and perspective adjustments for quick and easy use.
+
 
 There are optional inputs for an external camera and an external sun (or moon).
 
