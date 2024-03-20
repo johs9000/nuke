@@ -10,7 +10,7 @@ There are built in controls for sun and sky control, simple color correcting and
 There are optional inputs for an external camera and an external sun (or moon).
 
 
-Gizmos/jm_almostPhysicalSunAndSky_v003/jm_almostPhysicalSunAndSky_v002.gif
+<img src="Gizmos/jm_almostPhysicalSunAndSky_v003/jm_almostPhysicalSunAndSky_v002.gif">
 
 
 
