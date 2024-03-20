@@ -1,14 +1,24 @@
 # jm_almostPhysicalSunAndSky
-Generates an adjustable and animatable sun and sky background plate. Inspired by the physical sky implementation in 3D renders like Arnold
+Generates an adjustable and animatable sun and sky background plate. Inspired by the physical sky implementation in 3D renders like Arnold.
 
 
 
-The gizmo outputs a sun and sky background plate or each element isolated. It can also output a spherical 3D scene or a 3D light
+The gizmo outputs a sun and sky background plate or each element isolated. It can also output a spherical 3D scene or a 3D light.
+
 
 There are built in controls for sun and sky control, simple color correcting and perspective adjustments for quick and easy use.
 
+
 There are optional inputs for an external camera and an external sun (or moon).
 
+<p align="center">
+<img src="jm_almostPhysicalSunAndSky_v002.gif">
+</p>
+
+
+<p align="center">
+<img src="jm_almostPhysicalSunAndSky_v002_UI.png">
+</p>
 
 
 It is unfortunately not an implementation of the Hosek-Wilkie sky radiance model as it is beyond skills to implement that, but it is made to look like the physical sky implementation in Arnold using ACES. 
