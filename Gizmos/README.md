@@ -43,9 +43,9 @@ jm_safeZones:
 <br>
 
 
-jm_symmetryCheck_v001:
+jm_symmetryCheck:
 <p align="left">
-<img src="jm_symmertyCheck\jm_symmertyCheck.gif">
+<img src="jm_symmetryCheck\jm_symmetryCheck.gif">
 </p>
 <br>
 

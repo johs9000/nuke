@@ -1,16 +1,16 @@
 # jm_symmetryCheck
 
-lalalalalala
+A simple tool for centering graphic elements. It can mirror on X, Y or both axis
 
 
 
 <p align="center">
-<img src="jm_symmertyCheck_icon.png">
+<img src="jm_symmetryCheck_icon.png">
 </p>
 
 
 <p align="center">
-<img src="jm_symmertyCheck.gif">
+<img src="jm_symmetryCheck.gif">
 </p>
 
 
@@ -20,4 +20,3 @@ lalalalalala
 
 
 
-laLALALALA
