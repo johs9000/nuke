@@ -1,5 +1,5 @@
 # jm_almostPhysicalSunAndSky
-# Generates an adjustable and animatable sun and sky background plate. Inspired by the physical sky implementation in 3D renders like Arnold
+Generates an adjustable and animatable sun and sky background plate. Inspired by the physical sky implementation in 3D renders like Arnold
 
 
 
