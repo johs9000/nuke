@@ -5,12 +5,12 @@ lalalalalala
 
 
 <p align="center">
-<img src="symmertyCheck_icon_v001.png">
+<img src="symmertyCheck_icon.png">
 </p>
 
 
 <p align="center">
-<img src="jm_symetryCheck_v001.gif">
+<img src="jm_symetryCheck.gif">
 </p>
 
 
