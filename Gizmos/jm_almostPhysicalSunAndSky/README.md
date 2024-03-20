@@ -21,7 +21,7 @@ There are optional inputs for an external camera and an external sun (or moon).
 </p>
 
 
-It is unfortunately not an implementation of the Hosek-Wilkie sky radiance model as it is beyond skills to implement that, but it is made to look like the physical sky implementation in Arnold using ACES. 
+It is unfortunately not an implementation of something like the Hosek-Wilkie sky radiance model as it is beyond skills to implement that, but it is made to look like the physical sky implementation in Arnold using ACES. 
 
  
 
