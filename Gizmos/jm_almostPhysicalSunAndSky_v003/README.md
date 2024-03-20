@@ -12,12 +12,12 @@ There are built in controls for sun and sky control, simple color correcting and
 There are optional inputs for an external camera and an external sun (or moon).
 
 <p align="center">
-<img src="jm_almostPhysicalSunAndSky_v002.gif">
+<img src="jm_almostPhysicalSunAndSky.gif">
 </p>
 
 
 <p align="center">
-<img src="jm_almostPhysicalSunAndSky_v002_UI.png">
+<img src="jm_almostPhysicalSunAndSky_UI.png">
 </p>
 
 
