@@ -2,7 +2,7 @@
 
 Generates lines perpendicular to gradients, useful for analyzing and visualizing flow, direction and smoothness in large soft gradients.
 
-</p>
+<br>
 
 Good for spotting bumps and errors from cleanup, cloning and patching in soft gradients.
 

@@ -29,5 +29,11 @@ jm_gradientAnalyzer:
 <br>
 
 
+jm_gradientAnalyzer:
+<p align="left">
+<img src="jm_showDirtyAlpha2\jm_showDirtyAlpha2.jpg">
+</p>
+<br>
+
 
 
