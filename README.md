@@ -1,4 +1,4 @@
 # nuke
 Nuke tools and usefull stuf.
 <br><br>
-Go to Gizmos.
+<b>Go to Gizmos.</b>
