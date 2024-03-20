@@ -4,27 +4,29 @@
 jm_almostPhysicalSunAndSky:
 <p align="left">
 <img src="jm_almostPhysicalSunAndSky\jm_almostPhysicalSunAndSky.gif">
-</p></p>
+</p>
+<br>
 
 
 jm_cleanPatchGen:
 <p align="left">
 <img src="jm_cleanPatchGen\jm_cleanPatchGen.png">
-</p></p>
-
+</p>
+<br>
 
 
 jm_glow:
 <p align="left">
 <img src="jm_glow\jm_glow.png">
 </p>
+<br>
 
 
 jm_gradientAnalyzer:
 <p align="left">
 <img src="jm_gradientAnalyzer\jm_gradientAnalyzer.gif">
 </p>
-
+<br>
 
 
 
