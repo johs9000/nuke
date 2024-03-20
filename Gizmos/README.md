@@ -36,6 +36,13 @@ jm_showDirtyAlpha2:
 <br>
 
 
+jm_symmetryCheck:
+<p align="left">
+<img src="jm_symmetryCheck\jm_symmetryCheck.gif">
+</p>
+<br>
+
+
 jm_safeZones:
 <p align="left">
 <img src="jm_safeZones\jm_safeZones.jpg">
@@ -43,11 +50,7 @@ jm_safeZones:
 <br>
 
 
-jm_symmetryCheck:
-<p align="left">
-<img src="jm_symmetryCheck\jm_symmetryCheck.gif">
-</p>
-<br>
+
 
 
 
