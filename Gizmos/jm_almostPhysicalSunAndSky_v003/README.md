@@ -9,10 +9,14 @@ There are built in controls for sun and sky control, simple color correcting and
 
 There are optional inputs for an external camera and an external sun (or moon).
 
-
+<p align="center">
 <img src="jm_almostPhysicalSunAndSky_v002.gif">
+</p>
 
 
+<p align="center">
+<img src="jm_almostPhysicalSunAndSky_v002_UI.png">
+</p>
 
 
 It is unfortunately not an implementation of the Hosek-Wilkie sky radiance model as it is beyond skills to implement that, but it is made to look like the physical sky implementation in Arnold using ACES. 
