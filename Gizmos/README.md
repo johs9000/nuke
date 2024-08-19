@@ -8,6 +8,13 @@ jm_almostPhysicalSunAndSky:
 <br>
 
 
+jm_improvedFrameRange:
+<p align="left">
+<img src="jm_improvedFrameRange\j_improvedFrameRangeOnClip_v002.gif">
+</p>
+<br>
+
+
 jm_cleanPatchGen:
 <p align="left">
 <img src="jm_cleanPatchGen\jm_cleanPatchGen.png">
