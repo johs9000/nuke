@@ -1,6 +1,6 @@
 # jm_improvedFrameRange
 
-A tool good for plucking shots out of conformed sources, and for handling handles.
+A tool for plucking shots out of conformed sources, and for handling handles.
 
 
 <p align="center">
@@ -9,7 +9,7 @@ A tool good for plucking shots out of conformed sources, and for handling handle
 
 
 <p align="center">
-<img src="jm_improvedFrameRange.png">
+<img src="jm_improvedFrameRange_v003.png">
 </p>
 
 
