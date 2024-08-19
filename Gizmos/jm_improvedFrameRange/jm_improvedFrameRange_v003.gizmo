@@ -1,0 +1,1135 @@
+Gizmo {
+help "A tool good for plucking shots out of conformed sources and for handling handles.\n\n jm_improvedFrameRange_v003\n -by Johannes Møgelvang"
+ label "Out Range: \[value knob.outRange.x] - \[value knob.outRange.y]\nFrame amount: \[value knob.frameAmount]"
+ addUserKnob {20 User}
+ addUserKnob {41 first_frame l "frame range" T j_improvedFrameRange_MASTER.first_frame}
+ addUserKnob {41 last_frame l "" -STARTLINE T j_improvedFrameRange_MASTER.last_frame}
+ addUserKnob {41 reset T j_improvedFrameRange_MASTER.reset}
+ addUserKnob {41 startFrame l "Start At Frame" T j_improvedFrameRange_MASTER.startFrame}
+ addUserKnob {41 handleSize l "Handle Size" T j_improvedFrameRange_MASTER.handleSize}
+ addUserKnob {41 offsetByHandle l "Offset Clip By Handle" T j_improvedFrameRange_MASTER.offsetByHandle}
+ addUserKnob {41 outsideSourceRange l "Outside Source Range" T j_improvedFrameRange_MASTER.outsideSourceRange}
+ addUserKnob {41 indicateOutOfRange l "Indicate Out Of Range by" T j_improvedFrameRange_MASTER.indicateOutOfRange}
+ addUserKnob {41 indicatorStyle l "" -STARTLINE T j_improvedFrameRange_MASTER.indicatorStyle}
+ addUserKnob {41 outRange +INVISIBLE T j_improvedFrameRange_MASTER.outRange}
+ addUserKnob {41 frameAmount +INVISIBLE T j_improvedFrameRange_MASTER.frameAmount}
+}
+ Input {
+  inputs 0
+  name Input1
+  xpos -630
+  ypos 401
+ }
+ Dot {
+  name Dot_IN
+  label IN
+  xpos -596
+  ypos 441
+ }
+ FrameRange {
+  first_frame 1
+  last_frame 100
+  time ""
+  name j_improvedFrameRange_MASTER
+  label "Out Range: \[value knob.outRange.x] - \[value knob.outRange.y]\nFrame amount: \[value knob.frameAmount]"
+  xpos -630
+  ypos 558
+  addUserKnob {20 User}
+  addUserKnob {3 startFrame l "Start At Frame" t "Starts the selected range at this frame."}
+  startFrame 1
+  addUserKnob {14 handleSize l "Handle Size" t "Integer Preferred\nAdds (or substracts with negative values) handles to each side. Can be split into seperate values for IN and OUT handles. \nw = IN handle\nh = OUT handle\nAs long as \"Offset By Clip Handle\" is off, this only offsets IN and OUT points of the resulting frame range, frames are kept in the same place." R -100 100}
+  addUserKnob {6 offsetByHandle l "Offset Clip By Handle" t "Offsets the clip so that the first frame of the IN handle is at the start frame." +STARTLINE}
+  addUserKnob {4 outsideSourceRange l "Outside Source Range" M {source hold loop bounce black "" ""}}
+  addUserKnob {6 indicateOutOfRange l "Indicate Out Of Range by" t "Indicates in the viewer if current frame is outside the selected input range.\n-You probably want this turned off if you want to render the output of this node." +STARTLINE}
+  addUserKnob {4 indicatorStyle l "" -STARTLINE M {Grey Blue Extreme "Grey simple" "" "" "" "" ""}}
+  addUserKnob {26 noControlsInGizmo}
+  addUserKnob {12 outRange}
+  outRange {{"jr_outFramerange3.knob.first_frame + (jr_offsetByHandle2.time_offset * jr_offsteByHandleToggle2.which )"} {"jr_outFramerange3.knob.last_frame  + (jr_offsetByHandle2.time_offset * jr_offsteByHandleToggle2.which )"}}
+  addUserKnob {16 frameAmount}
+  frameAmount {{"( outRange.y - outRange.x ) + 1"}}
+ }
+set Ndb2e4680 [stack 0]
+ TimeClip {
+  time ""
+  first {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  last {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  origfirst {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  origlast {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  origset true
+  mask_metadata true
+  name jr_timeClip_black11
+  xpos -81
+  ypos 727
+ }
+push $Ndb2e4680
+ TimeClip {
+  time ""
+  first {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  before bounce
+  last {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  after bounce
+  origfirst {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  origlast {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  origset true
+  mask_metadata true
+  name jr_timeClip_bounce11
+  xpos -213
+  ypos 727
+ }
+push $Ndb2e4680
+ TimeClip {
+  time ""
+  first {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  before loop
+  last {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  after loop
+  origfirst {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  origlast {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  origset true
+  mask_metadata true
+  name jr_timeClip_Loop11
+  xpos -341
+  ypos 727
+ }
+push $Ndb2e4680
+ TimeClip {
+  time ""
+  first {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  before hold
+  last {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  after hold
+  origfirst {{parent.j_improvedFrameRange_MASTER.knob.first_frame}}
+  origlast {{parent.j_improvedFrameRange_MASTER.knob.last_frame}}
+  origset true
+  mask_metadata true
+  name jr_timeClip_hold11
+  xpos -457
+  ypos 727
+ }
+push $Ndb2e4680
+ Switch {
+  inputs 5
+  which {{j_improvedFrameRange_MASTER.outsideSourceRange}}
+  name Switch12
+  xpos -630
+  ypos 884
+ }
+set Naae62400 [stack 0]
+ Dot {
+  name Dot13
+  xpos -1446
+  ypos 1136
+ }
+set Naae62800 [stack 0]
+ Dot {
+  name Dot42
+  xpos -3099
+  ypos 1136
+ }
+set Naae62c00 [stack 0]
+ Dot {
+  name Dot30
+  xpos -4810
+  ypos 1136
+ }
+set Naae63000 [stack 0]
+ Dot {
+  name Dot26
+  xpos -6180
+  ypos 1136
+ }
+ Dot {
+  name Dot27
+  xpos -6180
+  ypos 2234
+ }
+set Naae63800 [stack 0]
+ ColorCorrect {
+  saturation 0.67
+  gain 0.234
+  offset 0.014
+  name ColorCorrect12
+  xpos -6039
+  ypos 2315
+ }
+ Dot {
+  name Dot28
+  xpos -6005
+  ypos 2446
+ }
+push $Naae63800
+push $Naae63800
+ ColorCorrect {
+  saturation 0.67
+  gain 0.234
+  offset 0.014
+  name ColorCorrect11
+  xpos -6352
+  ypos 2332
+ }
+ Switch {
+  inputs 2
+  which {{"frame < j_improvedFrameRange_MASTER.knob.first_frame ? 0:1"}}
+  name Switch6
+  xpos -6214
+  ypos 2413
+ }
+ Switch {
+  inputs 2
+  which {{"frame > j_improvedFrameRange_MASTER.knob.last_frame ? 1:0"}}
+  name Switch7
+  xpos -6214
+  ypos 2531
+ }
+ Dot {
+  name Dot29
+  xpos -6180
+  ypos 2769
+ }
+push $Naae63000
+ Dot {
+  name Dot6
+  xpos -4810
+  ypos 1322
+ }
+set Nadbad400 [stack 0]
+ Dot {
+  name Dot16
+  xpos -4385
+  ypos 1415
+ }
+set Nadbad800 [stack 0]
+ Dot {
+  name Dot17
+  xpos -4251
+  ypos 1511
+ }
+set Nadbadc00 [stack 0]
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {{width} 0}
+  name Ramp7
+  xpos -4159
+  ypos 1576
+ }
+ ColorLookup {
+  lut {master {curve L x0.150000006 -1 x0.25 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup11
+  xpos -4159
+  ypos 1640
+ }
+push $Nadbadc00
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {0 {height}}
+  name Ramp8
+  xpos -4285
+  ypos 1576
+ }
+ ColorLookup {
+  lut {master {curve L 0 x0.05000000075 1 0 1 0 1 0 x0.349999994 1 x0.400000006 0 x0.4499999881 1 x0.5 0 1 0 x0.6499999762 1 x0.6999999881 0 1 0 1 x0.8999999762 0 x0.9499999881 1 0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup12
+  xpos -4285
+  ypos 1645
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge2
+  label "\[value bbox]"
+  xpos -4285
+  ypos 1723
+ }
+ ColorLookup {
+  range 9.85
+  lut {master {curve L 0 1}
+    red {curve L x0.3000000119 0 x0.349999994 0.995 x0.5 1 1 x0.6999999881 0}
+    green {curve L x0.4399999976 1 x0.5 0}
+    blue {curve L 0 x0.05000000075 1 x0.5 1 1 x1 0}
+    alpha {curve L 0 1}}
+  name ColorLookup13
+  xpos -4285
+  ypos 1806
+ }
+set Na419f400 [stack 0]
+ Shuffle {
+  red blue
+  green blue
+  alpha blue
+  name Shuffle2
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -4119
+  ypos 1878
+ }
+ ColorCorrect {
+  gain {1 0 0 1}
+  name ColorCorrect1
+  xpos -4119
+  ypos 1958
+ }
+push $Na419f400
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle3
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -4234
+  ypos 1878
+ }
+ ColorCorrect {
+  gain {0 1 0 1}
+  name ColorCorrect6
+  xpos -4234
+  ypos 1958
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name Merge7
+  label "\[value bbox]"
+  xpos -4234
+  ypos 2018
+ }
+ Dot {
+  name Dot18
+  xpos -4200
+  ypos 2063
+ }
+push $Na419f400
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle11
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -4349
+  ypos 1878
+ }
+ Dot {
+  name Dot19
+  xpos -4315
+  ypos 1937
+ }
+push $Nadbad800
+ ColorCorrect {
+  inputs 1+1
+  saturation 0.7
+  gain {0.739110589 0.2099999785 1 1}
+  offset {0.02333333343 -0.04666666687 0.02333333343 0}
+  name ColorCorrect10
+  xpos -4419
+  ypos 1980
+ }
+ Merge2 {
+  inputs 2
+  name Merge11
+  label "\[value bbox]"
+  xpos -4419
+  ypos 2127
+ }
+ Dot {
+  name Dot20
+  xpos -4385
+  ypos 2223
+ }
+push $Nadbad400
+push $Nadbad400
+ Dot {
+  name Dot21
+  xpos -5288
+  ypos 1415
+ }
+set Nbcd50400 [stack 0]
+ Dot {
+  name Dot22
+  xpos -5154
+  ypos 1511
+ }
+set Nbcd50800 [stack 0]
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {{width} 0}
+  name Ramp9
+  xpos -5062
+  ypos 1576
+ }
+ ColorLookup {
+  lut {master {curve L x0.75 -1 x0.8499999642 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup14
+  xpos -5062
+  ypos 1643
+ }
+push $Nbcd50800
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {0 {height}}
+  name Ramp10
+  xpos -5188
+  ypos 1576
+ }
+ ColorLookup {
+  lut {master {curve L 0 x0.05000000075 1 0 1 0 1 0 x0.349999994 1 x0.400000006 0 x0.4499999881 1 x0.5 0 1 0 x0.6499999762 1 x0.6999999881 0 1 0 1 x0.8999999762 0 x0.9499999881 1 0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup15
+  xpos -5188
+  ypos 1645
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge8
+  label "\[value bbox]"
+  xpos -5188
+  ypos 1723
+ }
+ ColorLookup {
+  range 9.85
+  lut {master {curve L 0 1}
+    red {curve L x0.3000000119 0 x0.349999994 0.995 x0.5 1 1 x0.6999999881 0}
+    green {curve L x0.4399999976 0 x0.5 1 x0.6000000238 1}
+    blue {curve L 0 x0.05000000075 1 x0.5 1 1 x1 0}
+    alpha {curve L 0 1}}
+  name ColorLookup16
+  xpos -5188
+  ypos 1812
+ }
+set N27946000 [stack 0]
+ Shuffle {
+  red blue
+  green blue
+  alpha blue
+  name Shuffle10
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -5022
+  ypos 1878
+ }
+ ColorCorrect {
+  gain {1 0 0 1}
+  name ColorCorrect8
+  xpos -5022
+  ypos 1958
+ }
+push $N27946000
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle6
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -5137
+  ypos 1878
+ }
+ ColorCorrect {
+  gain {0 1 0 1}
+  name ColorCorrect7
+  xpos -5137
+  ypos 1958
+ }
+ Merge2 {
+  inputs 2
+  operation under
+  name Merge10
+  label "\[value bbox]"
+  xpos -5137
+  ypos 2018
+ }
+ Dot {
+  name Dot23
+  xpos -5103
+  ypos 2063
+ }
+push $N27946000
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle9
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -5252
+  ypos 1878
+ }
+ Dot {
+  name Dot24
+  xpos -5218
+  ypos 1937
+ }
+push $Nbcd50400
+ ColorCorrect {
+  inputs 1+1
+  saturation 0.7
+  gain {0.739110589 0.2099999785 1 1}
+  offset {0.02333333343 -0.04666666687 0.02333333343 0}
+  name ColorCorrect9
+  xpos -5322
+  ypos 1980
+ }
+ Merge2 {
+  inputs 2
+  name Merge9
+  label "\[value bbox]"
+  xpos -5322
+  ypos 2127
+ }
+ Dot {
+  name Dot25
+  xpos -5288
+  ypos 2223
+ }
+ Switch {
+  inputs 2
+  which {{"frame < j_improvedFrameRange_MASTER.knob.first_frame ? 0:1"}}
+  name Switch3
+  xpos -4844
+  ypos 2343
+ }
+ Switch {
+  inputs 2
+  which {{"frame > j_improvedFrameRange_MASTER.knob.last_frame ? 1:0"}}
+  name Switch4
+  xpos -4844
+  ypos 2461
+ }
+push $Naae62c00
+ Dot {
+  name Dot31
+  xpos -3099
+  ypos 1315
+ }
+set N25627800 [stack 0]
+ Dot {
+  name Dot32
+  xpos -2674
+  ypos 1408
+ }
+set N25627c00 [stack 0]
+ Dot {
+  name Dot33
+  xpos -2540
+  ypos 1504
+ }
+set N9df6e000 [stack 0]
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {{width} 0}
+  name Ramp11
+  xpos -2448
+  ypos 1569
+ }
+ ColorLookup {
+  lut {master {curve L x0.150000006 -1 x0.25 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup17
+  xpos -2448
+  ypos 1634
+ }
+push $N9df6e000
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {0 {height}}
+  name Ramp12
+  xpos -2574
+  ypos 1569
+ }
+ ColorLookup {
+  lut {master {curve L 0 x0.05000000075 1 0 1 0 1 0 x0.349999994 1 x0.400000006 0 x0.4499999881 1 x0.5 0 1 0 x0.6499999762 1 x0.6999999881 0 1 0 1 x0.8999999762 0 x0.9499999881 1 0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup18
+  xpos -2574
+  ypos 1638
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge12
+  label "\[value bbox]"
+  xpos -2574
+  ypos 1716
+ }
+ ColorLookup {
+  range 9.85
+  lut {master {curve L 0 1}
+    red {curve L x0.400000006 0 x0.4410000145 0.995 x0.5 1 x0.5600000024 1 x0.6000000238 0}
+    green {curve L x0.4399999976 1 x0.5 0}
+    blue {curve L 0 1}
+    alpha {curve L 0 1}}
+  name ColorLookup19
+  xpos -2574
+  ypos 1801
+ }
+set N9df6f800 [stack 0]
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle12
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -2504
+  ypos 1876
+ }
+ ColorCorrect {
+  gain {0.1299999952 0.5219889283 1 0.4149999917}
+  name ColorCorrect14
+  xpos -2504
+  ypos 1974
+ }
+ Dot {
+  name Dot34
+  xpos -2470
+  ypos 2032
+ }
+push $N9df6f800
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle13
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -2635
+  ypos 1876
+ }
+ Dot {
+  name Dot35
+  xpos -2601
+  ypos 1932
+ }
+push $N25627c00
+ ColorCorrect {
+  inputs 1+1
+  saturation 0.52
+  gain {0.2781249881 0.4548552632 0.625 1}
+  offset {0 0.02060695179 0.06599999964 0}
+  name ColorCorrect13
+  xpos -2708
+  ypos 1972
+ }
+ Merge2 {
+  inputs 2
+  name Merge13
+  label "\[value bbox]"
+  xpos -2708
+  ypos 2096
+ }
+ Dot {
+  name Dot36
+  xpos -2674
+  ypos 2216
+ }
+push $N25627800
+push $N25627800
+ Dot {
+  name Dot37
+  xpos -3577
+  ypos 1408
+ }
+set N2c921c00 [stack 0]
+ Dot {
+  name Dot38
+  xpos -3443
+  ypos 1504
+ }
+set N2c462000 [stack 0]
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {{width} 0}
+  name Ramp13
+  xpos -3351
+  ypos 1569
+ }
+ ColorLookup {
+  lut {master {curve L x0.75 -1 x0.8499999642 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup20
+  xpos -3351
+  ypos 1638
+ }
+push $N2c462000
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {0 {height}}
+  name Ramp14
+  xpos -3477
+  ypos 1569
+ }
+ ColorLookup {
+  lut {master {curve L 0 x0.05000000075 1 0 1 0 1 0 x0.349999994 1 x0.400000006 0 x0.4499999881 1 x0.5 0 1 0 x0.6499999762 1 x0.6999999881 0 1 0 1 x0.8999999762 0 x0.9499999881 1 0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup21
+  xpos -3477
+  ypos 1638
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge14
+  label "\[value bbox]"
+  xpos -3477
+  ypos 1716
+ }
+ ColorLookup {
+  range 9.85
+  lut {master {curve L 0 1}
+    red {curve L x0.400000006 0 x0.4410000145 0.995 x0.5 1 x0.5600000024 1 x0.6000000238 0}
+    green {curve L x0.4399999976 0 x0.5 1 x0.6000000238 1}
+    blue {curve L 0 1}
+    alpha {curve L 0 1}}
+  name ColorLookup22
+  xpos -3477
+  ypos 1808
+ }
+set N2c463800 [stack 0]
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle14
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -3426
+  ypos 1876
+ }
+ ColorCorrect {
+  gain {0.1299999952 0.5219889283 1 0.4149999917}
+  name ColorCorrect15
+  xpos -3426
+  ypos 1974
+ }
+ Dot {
+  name Dot39
+  xpos -3392
+  ypos 2032
+ }
+push $N2c463800
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle15
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -3541
+  ypos 1876
+ }
+ Dot {
+  name Dot40
+  xpos -3507
+  ypos 1932
+ }
+push $N2c921c00
+ ColorCorrect {
+  inputs 1+1
+  saturation 0.52
+  gain {0.2781249881 0.4548552632 0.625 1}
+  offset {0 0.02060695179 0.06599999964 0}
+  name ColorCorrect16
+  xpos -3611
+  ypos 1984
+ }
+ Merge2 {
+  inputs 2
+  name Merge15
+  label "\[value bbox]"
+  xpos -3611
+  ypos 2095
+ }
+ Dot {
+  name Dot41
+  xpos -3577
+  ypos 2216
+ }
+ Switch {
+  inputs 2
+  which {{"frame < j_improvedFrameRange_MASTER.knob.first_frame ? 0:1"}}
+  name Switch8
+  xpos -3133
+  ypos 2336
+ }
+ Switch {
+  inputs 2
+  which {{"frame > j_improvedFrameRange_MASTER.knob.last_frame ? 1:0"}}
+  name Switch9
+  xpos -3133
+  ypos 2472
+ }
+push $Naae62800
+ Dot {
+  name Dot8
+  xpos -1446
+  ypos 1274
+ }
+set N8f164400 [stack 0]
+ Dot {
+  name Dot9
+  xpos -1021
+  ypos 1367
+ }
+set N8f164800 [stack 0]
+ Dot {
+  name Dot14
+  xpos -887
+  ypos 1463
+ }
+set N8f164c00 [stack 0]
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {{width} 0}
+  name Ramp5
+  xpos -795
+  ypos 1528
+ }
+ ColorLookup {
+  lut {master {curve L x0.150000006 -1 x0.25 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup7
+  xpos -795
+  ypos 1593
+ }
+push $N8f164c00
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {0 {height}}
+  name Ramp6
+  xpos -921
+  ypos 1528
+ }
+ ColorLookup {
+  lut {master {curve L 0 x0.05000000075 1 0 1 0 1 0 x0.349999994 1 x0.400000006 0 x0.4499999881 1 x0.5 0 1 0 x0.6499999762 1 x0.6999999881 0 1 0 1 x0.8999999762 0 x0.9499999881 1 0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup9
+  xpos -921
+  ypos 1597
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge5
+  label "\[value bbox]"
+  xpos -921
+  ypos 1675
+ }
+ ColorLookup {
+  range 9.85
+  lut {master {curve L 0 1}
+    red {curve L x0.400000006 0 x0.4410000145 0.995 x0.5 1 x0.5600000024 1 x0.6000000238 0}
+    green {curve L x0.4399999976 1 x0.5 0}
+    blue {curve L 0 1}
+    alpha {curve L 0 1}}
+  name ColorLookup10
+  xpos -921
+  ypos 1760
+ }
+set Nc38ec400 [stack 0]
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle7
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -851
+  ypos 1835
+ }
+ ColorCorrect {
+  gain 0.415
+  name ColorCorrect4
+  xpos -851
+  ypos 1933
+ }
+ Dot {
+  name Dot5
+  xpos -817
+  ypos 1991
+ }
+push $Nc38ec400
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle8
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -982
+  ypos 1835
+ }
+ Dot {
+  name Dot4
+  xpos -948
+  ypos 1891
+ }
+push $N8f164800
+ ColorCorrect {
+  inputs 1+1
+  saturation 0.67
+  gain 0.234
+  offset 0.014
+  name ColorCorrect5
+  xpos -1055
+  ypos 1933
+ }
+ Merge2 {
+  inputs 2
+  name Merge6
+  label "\[value bbox]"
+  xpos -1055
+  ypos 2055
+ }
+ Dot {
+  name Dot10
+  xpos -1021
+  ypos 2175
+ }
+push $N8f164400
+push $N8f164400
+ Dot {
+  name Dot7
+  xpos -1924
+  ypos 1367
+ }
+set Nc5974800 [stack 0]
+ Dot {
+  name Dot12
+  xpos -1790
+  ypos 1463
+ }
+set Nc5974c00 [stack 0]
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {{width} 0}
+  name Ramp3
+  xpos -1698
+  ypos 1528
+ }
+ ColorLookup {
+  lut {master {curve L x0.75 -1 x0.8499999642 1}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup5
+  xpos -1698
+  ypos 1597
+ }
+push $Nc5974c00
+ Ramp {
+  replace true
+  p0 {0 0}
+  p1 {0 {height}}
+  name Ramp4
+  xpos -1824
+  ypos 1528
+ }
+ ColorLookup {
+  lut {master {curve L 0 x0.05000000075 1 0 1 0 1 0 x0.349999994 1 x0.400000006 0 x0.4499999881 1 x0.5 0 1 0 x0.6499999762 1 x0.6999999881 0 1 0 1 x0.8999999762 0 x0.9499999881 1 0}
+    red {}
+    green {}
+    blue {}
+    alpha {}}
+  name ColorLookup6
+  xpos -1824
+  ypos 1597
+ }
+ Merge2 {
+  inputs 2
+  operation from
+  name Merge3
+  label "\[value bbox]"
+  xpos -1824
+  ypos 1675
+ }
+ ColorLookup {
+  range 9.85
+  lut {master {curve L 0 1}
+    red {curve L x0.400000006 0 x0.4410000145 0.995 x0.5 1 x0.5600000024 1 x0.6000000238 0}
+    green {curve L x0.4399999976 0 x0.5 1 x0.6000000238 1}
+    blue {curve L 0 1}
+    alpha {curve L 0 1}}
+  name ColorLookup8
+  xpos -1824
+  ypos 1767
+ }
+set Ndc852400 [stack 0]
+ Shuffle {
+  green red
+  blue red
+  alpha red
+  name Shuffle4
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -1773
+  ypos 1835
+ }
+ ColorCorrect {
+  gain 0.415
+  name ColorCorrect3
+  xpos -1773
+  ypos 1933
+ }
+ Dot {
+  name Dot3
+  xpos -1739
+  ypos 1991
+ }
+push $Ndc852400
+ Shuffle {
+  red green
+  blue green
+  alpha green
+  name Shuffle5
+  label "\[value knob.in] --> \[value knob.out]"
+  xpos -1888
+  ypos 1835
+ }
+ Dot {
+  name Dot2
+  xpos -1854
+  ypos 1891
+ }
+push $Nc5974800
+ ColorCorrect {
+  inputs 1+1
+  saturation 0.67
+  gain 0.234
+  offset 0.014
+  name ColorCorrect2
+  xpos -1958
+  ypos 1933
+ }
+ Merge2 {
+  inputs 2
+  name Merge4
+  label "\[value bbox]"
+  xpos -1958
+  ypos 2055
+ }
+ Dot {
+  name Dot11
+  xpos -1924
+  ypos 2175
+ }
+ Switch {
+  inputs 2
+  which {{"frame < j_improvedFrameRange_MASTER.knob.first_frame ? 0:1"}}
+  name Switch1
+  xpos -1480
+  ypos 2295
+ }
+ Switch {
+  inputs 2
+  which {{"frame > j_improvedFrameRange_MASTER.knob.last_frame ? 1:0"}}
+  name Switch2
+  xpos -1480
+  ypos 2431
+ }
+ Switch {
+  inputs 4
+  which {{j_improvedFrameRange_MASTER.indicatorStyle}}
+  name Switch5
+  xpos -1480
+  ypos 2820
+ }
+ Dot {
+  name Dot15
+  xpos -1446
+  ypos 2910
+ }
+push $Naae62400
+ Switch {
+  inputs 2
+  which {{j_improvedFrameRange_MASTER.indicateOutOfRange}}
+  name switch_outsideRangeIndicator
+  xpos -630
+  ypos 3147
+ }
+ TimeOffset {
+  time_offset {{-j_improvedFrameRange_MASTER.knob.first_frame}}
+  time ""
+  name jr_rewind12
+  label "\[value knob.time_offset]"
+  xpos -630
+  ypos 3268
+ }
+ TimeOffset {
+  time_offset {{parent.j_improvedFrameRange_MASTER.startFrame}}
+  time ""
+  name jr_startAt12
+  label "\[value knob.time_offset]"
+  xpos -630
+  ypos 3343
+ }
+ FrameRange {
+  first_frame {{"j_improvedFrameRange_MASTER.startFrame - j_improvedFrameRange_MASTER.handleSize.w"}}
+  last_frame {{"(j_improvedFrameRange_MASTER.knob.last_frame - j_improvedFrameRange_MASTER.knob.first_frame ) + j_improvedFrameRange_MASTER.handleSize.h + j_improvedFrameRange_MASTER.startFrame"}}
+  time ""
+  name jr_outFramerange3
+  label "\[value knob.first_frame] - \[value knob.last_frame]"
+  xpos -630
+  ypos 3437
+ }
+set Ndb2e3600 [stack 0]
+ TimeOffset {
+  time_offset {{parent.j_improvedFrameRange_MASTER.handleSize.w}}
+  time ""
+  name jr_offsetByHandle2
+  label "\[value knob.time_offset]"
+  xpos -538
+  ypos 3501
+ }
+push $Ndb2e3600
+ Switch {
+  inputs 2
+  which {{j_improvedFrameRange_MASTER.offsetByHandle}}
+  name jr_offsteByHandleToggle2
+  xpos -630
+  ypos 3563
+ }
+ Dot {
+  name Dot_OUT
+  label OUT
+  xpos -596
+  ypos 3700
+ }
+ Output {
+  name Output1
+  xpos -596
+  ypos 3800
+ }
+end_group
